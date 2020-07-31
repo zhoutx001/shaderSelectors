@@ -23,6 +23,9 @@
 
 <script src="js/three.js"></script>
 
+<br> 
+<br> 
+<br> 
 
 <label for="cars">Choose a shader:</label>
 
@@ -184,7 +187,11 @@
     }
 </script>
 
-<script>
+<script type="module">
+    
+    import Stats from './jsm/libs/stats.module.js';
+
+    let stats;
     let container;
     let camera, scene, renderer;
     let uniforms;
@@ -207,6 +214,10 @@
         container = document.getElementById( 'container' );
         
         let mycanvas = document.getElementById('mycanvas'); 
+
+
+        stats = new Stats();
+        container.appendChild( stats.dom );
         
         camera = new THREE.Camera();
         camera.position.z = 1;
@@ -324,6 +335,7 @@
     function animate() {
         requestAnimationFrame( animate );
         render();
+        stats.update();
     }
 
     function render() {
